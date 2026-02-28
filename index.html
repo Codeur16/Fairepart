@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa CHAAZOU Michel - Hommage 1948-2026</title>
+
+    <!-- Scripts & Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="images/logo.png">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            100: '#fbf8eb',
+                            200: '#f5edd1',
+                            300: '#ebd9a8',
+                            400: '#e0c582',
+                            500: '#d4af37',
+                            600: '#b48e2d',
+                            700: '#916f20',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            850: '#1c1917',
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .page-break {
+                page-break-after: always;
+            }
+
+            section {
+                min-height: 100vh;
+                height: auto;
+                padding-top: 0 !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* Animations professionnelles avancées */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
+        .reveal-delay-3 { transition-delay: 0.6s; }
+        .reveal-delay-4 { transition-delay: 0.8s; }
+
+        /* Animations spéciales */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        .fade-in-scale {
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .glow-animation {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Effet de texture papier subtil */
+        .paper-texture {
+            background-color: #fafaf9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d6d3d1' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-panel-dark {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Watermark */
+        .watermark-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+
+        .watermark-corner {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+            background-color: #f5f5f4;
+            color: #1c1917;
+            overflow-x: hidden;
+        }
+
+        .serif-font {
+            font-family: "Playfair Display", serif;
+        }
+
+        /* Ornamental dividers améliorés */
+        .ornament-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 32px 0;
+        }
+
+        .ornament-divider::before,
+        .ornament-divider::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+        }
+
+        .ornament-divider span {
+            color: #d4af37;
+            font-size: 24px;
+            line-height: 1;
+            text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hero section styles */
+        .hero-portrait {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .hero-portrait:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .portrait-frame {
+            position: relative;
+            border: 12px solid transparent;
+            background: linear-gradient(135deg, #d4af37, #b48e2d, #d4af37);
+            background-clip: padding-box;
+            padding: 8px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(212, 175, 55, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .portrait-frame::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portrait-frame:hover::before {
+            opacity: 1;
+        }
+
+        .portrait-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.8s ease;
+        }
+
+        .portrait-frame:hover .portrait-image {
+            filter: grayscale(0%);
+        }
+
+        /* Fleurs décoratives */
+        .flower-decoration {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .flower-top-left {
+            top: -40px;
+            left: -40px;
+            transform: rotate(-15deg);
+        }
+
+        .flower-top-right {
+            top: -40px;
+            right: -40px;
+            transform: rotate(15deg) scaleX(-1);
+        }
+
+        .flower-bottom-left {
+            bottom: -40px;
+            left: -40px;
+            transform: rotate(-165deg);
+        }
+
+        .flower-bottom-right {
+            bottom: -40px;
+            right: -40px;
+            transform: rotate(165deg) scaleX(-1);
+        }
+
+
+        /* Navigation améliorée */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #b48e2d);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #b48e2d 100%);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Section backgrounds */
+        .section-bg-light {
+            background: linear-gradient(135deg, #fbf8eb 0%, #f5f5f4 100%);
+        }
+
+        .section-bg-dark {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1c1917 100%);
+            color: #f5f5f4;
+        }
+
+        /* Text styling */
+        .text-accent {
+            color: #d4af37;
+        }
+
+        .border-accent {
+            border-color: #d4af37;
+        }
+
+        /* Image frame */
+        .image-frame {
+            border: 8px solid #d4af37;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            background: white;
+        }
+
+        .image-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Navigation styles */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #d4af37;
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* FAB PDF */
+        .fab-pdf {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #d4af37 0%, #b48e2d 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 40;
+        }
+
+        .fab-pdf:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer styles */
+        .glass-panel-footer {
+            background: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #d4af37 0%, rgba(212, 175, 55, 0.3) 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #d4af37;
+            border: 3px solid white;
+            border-radius: 50%;
+            left: -46px;
+            top: 5px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 20px !important;
+            }
+
+            .ornament-divider::before,
+            .ornament-divider::after {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="paper-texture text-stone-800 font-sans antialiased overflow-x-hidden">
+    <!-- Navigation améliorée et complète -->
+    <nav class="no-print fixed top-0 left-0 right-0 nav-glass shadow-lg z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo et titre -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gold-600 rounded-full flex items-center justify-center">
+                        <i data-lucide="feather" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div class="hidden sm:block">
+                        <h1 class="serif-font text-2xl font-bold text-gold-600">Papa Michel</h1>
+                        <p class="text-xs text-stone-500">1948 - 2026</p>
+                    </div>
+                </div>
+
+                <!-- Menu de navigation -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="nav-link group relative">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="home" class="w-4 h-4"></i>
+                            <span>Accueil</span>
+                        </span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#presentation" class="nav-link group relative">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                            <span>Biographie</span>
+                        </span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#program" class="nav-link group relative">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            <span>Programme</span>
+                        </span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#carte" class="nav-link group relative">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            <span>Localisation</span>
+                        </span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <!-- Bouton PDF -->
+                    <a href="PROGRAMME_PAPA_MICHEL_OK.pdf" download="PROGRAMME_PAPA_MICHEL_OK.pdf" class="btn-primary flex items-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span class="hidden sm:inline">PDF</span>
+                    </a>
+                    
+                    <!-- Menu mobile -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-stone-100 transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6 text-stone-700"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu mobile déroulant -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-stone-200">
+                <div class="flex flex-col gap-4">
+                    <a href="#hero" class="nav-link flex items-center gap-2">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        <span>Accueil</span>
+                    </a>
+                    <a href="#presentation" class="nav-link flex items-center gap-2">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                        <span>Biographie</span>
+                    </a>
+                    <a href="#program" class="nav-link flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Programme</span>
+                    </a>
+                    <a href="#carte" class="nav-link flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        <span>Localisation</span>
+                    </a>
+                    <a href="PROGRAMME_PAPA_MICHEL_OK.pdf" download="PROGRAMME_PAPA_MICHEL_OK.pdf" class="btn-primary flex items-center gap-2 w-full justify-center">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Télécharger PDF</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section - Page 1 -->
+    <section class="no-print pt-32 pb-0 section-bg-light bg-pattern relative min-h-screen flex items-center justify-center">
+        <!-- Tissue Ndop en arrière-plan -->
+        <div class="absolute inset-0 opacity-20">
+            <img src="images/tissue_traditionnelle.webp" class="w-full h-full object-cover" alt="Tissu Ndop traditionnel">
+        </div>
+        
+        <!-- Watermark background -->
+        <img src="images/defunt.png" class="watermark-bg" alt="Filigrane">
+        
+        <div class="relative-container max-w-6xl mx-auto px-6 py-12">
+            <!-- Titre principal -->
+            <div class="text-center mb-8 reveal fade-in-up">
+                <h1 class="serif-font text-6xl md:text-7xl font-bold text-gold-600 mb-4">Célébration de Vie</h1>
+                <div class="ornament-divider">
+                    <span>✦</span>
+                </div>
+            </div>
+
+            <!-- Section principale avec image en avant -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                <!-- Informations à gauche -->
+                <div class="order-2 md:order-1 space-y-6 reveal slide-in-left">
+                    <!-- Nom et dates -->
+                    <div class="glass-panel p-8 rounded-xl border-l-4 border-gold-500">
+                        <h2 class="serif-font text-4xl md:text-5xl font-bold text-stone-850 mb-6">
+                            Papa CHAAZOU Michel
+                        </h2>
+                        
+                        <div class="ornament-divider mb-6">
+                            <span>✞</span>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row justify-center gap-6">
+                            <div class="bg-white/60 px-6 py-3 rounded-lg border-l-4 border-gold-600 text-center">
+                                <p class="text-gold-600 font-bold text-2xl">1948</p>
+                                <p class="text-sm text-stone-500">Né à Bameng</p>
+                            </div>
+                            <div class="bg-white/60 px-6 py-3 rounded-lg border-l-4 border-gold-600 text-center">
+                                <p class="text-gold-600 font-bold text-2xl">2026</p>
+                                <p class="text-sm text-stone-500">Décédé le 10 février</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Citation biblique -->
+                    <div class="glass-panel-dark p-6 rounded-xl border-l-4 border-gold-500 glow-animation">
+                        <p class="italic text-stone-700 text-lg md:text-xl font-medium serif-font text-center">
+                            « Ce n'est ni par la puissance ni par la force, mais c'est par mon esprit, dit l'Éternel des armées. »
+                        </p>
+                        <p class="text-sm text-gold-600 font-semibold mt-4 text-right">Zacharie 4:6</p>
+                    </div>
+                </div>
+
+                <!-- Portrait en avant à droite -->
+                <div class="order-1 md:order-2 reveal slide-in-right">
+                    <div class="relative">
+                        <!-- Fleurs décoratives -->
+                        <img src="images/fleur.png" class="absolute -top-4 -left-4 w-12 h-12 float-animation" alt="Fleur décorative">
+                        <img src="images/fleur.png" class="absolute -top-4 -right-4 w-12 h-12 float-animation" alt="Fleur décorative">
+                        <img src="images/fleur.png" class="absolute -bottom-4 -left-4 w-12 h-12 float-animation" alt="Fleur décorative">
+                        <img src="images/fleur.png" class="absolute -bottom-4 -right-4 w-12 h-12 float-animation" alt="Fleur décorative">
+                        
+                        <!-- Cadre élaboré -->
+                        <div class="relative">
+                            <!-- Cadre doré -->
+                            <div class="absolute inset-0 border-8 border-gold-600 rounded-lg shadow-2xl"></div>
+                            <div class="absolute inset-0 border-4 border-gold-400 rounded-lg"></div>
+                            
+                            <!-- Image principale -->
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img src="images/defunt.png" class="w-full h-auto object-cover transition-transform duration-700 hover:scale-105" alt="Papa CHAAZOU Michel">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+                            </div>
+                            
+                            <!-- Coins décoratifs -->
+                            <div class="absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-gold-600"></div>
+                            <div class="absolute -top-2 -right-2 w-6 h-6 border-r-2 border-t-2 border-gold-600"></div>
+                            <div class="absolute -bottom-2 -left-2 w-6 h-6 border-l-2 border-b-2 border-gold-600"></div>
+                            <div class="absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-gold-600"></div>
+                        </div>
+                        
+                        <!-- Ruban décoratif -->
+                        <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-gold-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                            En mémoire
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Faire-part -->
+    <section class="page-break py-12 px-6 section-bg-light relative">
+        <!-- Watermark subtil -->
+        <img src="images/defunt.png" class="watermark-bg" alt="Filigrane">
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal fade-in-up">
+                <h2 class="serif-font text-5xl text-gold-700 mb-4">Faire-part</h2>
+                <div class="ornament-divider">
+                    <span>✦</span>
+                </div>
+            </div>
+
+            <!-- Photo latérale avec effet fondu -->
+            
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Famille du défunt -->
+                <div class="glass-panel p-8 rounded-lg reveal slide-in-left">
+                    <h3 class="serif-font text-2xl font-bold text-gold-600 mb-6 border-l-4 border-gold-400 pl-4">La Famille</h3>
+                    <div class="space-y-3 text-sm text-stone-700">
+                        <p class="font-medium"><strong>La Grande Famille MBAH Sa'asag TANMOU</strong></p>
+                        <p class="font-medium"><strong>La Grande Famille MBAH METANG FANMO</strong></p>
+                        <p class="font-medium"><strong>La Grande Famille MBAH WOUFEU KWANOU</strong></p>
+                        <p class="font-medium"><strong>La Grande Famille MBAH TAKOUAMEDJI</strong></p>
+                        <p class="font-medium"><strong>La Grande Famille NANA Abel</strong></p>
+                        <p><strong>Mme veuve TCHAHOU Pauline</strong>, épouse CHAAZOU</p>
+                        <p><strong>Mr et Mme DIEUNANG</strong> Dieudonné et enfants</p>
+                        <p><strong>Mr et Mme TCHOUANDO</strong> Élise et enfants</p>
+                        <p><strong>Mr et Mme NGOUNOU</strong>, épouse LEUGOUE</p>
+                        <p><strong>Mr et Mme FANMO CHOAZOUL</strong>, épouse NGANSO</p>
+                    </div>
+                </div>
+
+                <!-- Famille de l'épouse -->
+                <div class="glass-panel p-8 rounded-lg reveal slide-in-right">
+                    <h3 class="serif-font text-2xl font-bold text-gold-600 mb-6 border-l-4 border-gold-400 pl-4">La Famille (suite)</h3>
+                    <div class="space-y-3 text-sm text-stone-700">
+                        <p><strong>Mr et Mme YOUMOU</strong> Jongs</p>
+                        <p><strong>Mr et Mme NANA CHAAZOU</strong> Apollin</p>
+                        <p><strong>Mr et Mme WANCHEU</strong> Pélogie</p>
+                        <p><strong>Mr et Mme YAGANG-CHAAZOU</strong> Isabelle</p>
+                        <p><strong>Mr et Mme NGUETCHO CHAAZOU</strong>, épouse YOTA</p>
+                        <p><strong>Mr et Mme TCHOUANMOU CHAAZOU</strong> Éric</p>
+                        <p><strong>Mr et Mme NGOUNOU CHAAZOU</strong> Majollie</p>
+                        <p><strong>Mr et Mme DIEUNANG CHAAZOU</strong> Arnold</p>
+                        <p><strong>Mr et Mme CHETCHA CHAAZOU</strong> Gaëtan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annonce décès avec glass panel -->
+            <div class="glass-panel-dark p-10 rounded-xl border-l-4 border-gold-500 reveal fade-in-scale">
+                <div class="text-center">
+                    <p class="text-stone-700 font-medium mb-6 text-lg">
+                        Ont la profonde douleur de vous annoncer le décès de leur fils, beau-fils, époux, père, beau-père, grand-père, cousin, oncle, frère et beau-frère
+                    </p>
+                    <div class="ornament-divider mb-6">
+                        <span>✞</span>
+                    </div>
+                    <p class="serif-font text-4xl font-bold text-gold-700 mb-6">
+                        Papa CHAAZOU Michel
+                    </p>
+                    <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-600 inline-block">
+                        <p class="text-stone-700 font-medium">
+                            Survenu le 10 février 2026 à Nkongsamba, des suites de maladie.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 reveal slide-in-right">
+                <div class="relative">
+                    <img src="images/defunt_debout_en_tenue_traditionnlle.webp" class="w-full max-w-xs mx-auto rounded-lg shadow-2xl opacity-80 transition-opacity duration-1000 hover:opacity-100" alt="Papa Michel en tenue traditionnelle">
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-800/20 to-transparent rounded-lg"></div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Page 3: Biographie -->
+    <section id="presentation" class="page-break py-12 px-6 section-bg-light relative">
+        <!-- Watermark subtil -->
+        <img src="images/defunt.png" class="watermark-bg w-20 h-20" alt="Filigrane">
+        
+        <!-- Fleurs décoratives dans les coins -->
+        <img src="images/fleur.png" class="watermark-corner top-0 left-0 transform rotate-180" alt="Coin décoratif">
+        <img src="images/fleur.png" class="watermark-corner top-0 right-0 transform -scale-x-100 rotate-180" alt="Coin décoratif">
+        <img src="images/fleur.png" class="watermark-corner bottom-0 left-0 transform scale-x-100" alt="Coin décoratif">
+        <img src="images/fleur.png" class="watermark-corner bottom-0 right-0 transform -scale-x-100" alt="Coin décoratif">
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal fade-in-up">
+                <h2 class="serif-font text-5xl text-gold-700 mb-4">Biographie</h2>
+                <div class="ornament-divider">
+                    <span>✦</span>
+                </div>
+            </div>
+
+            <!-- Photo jeunesse intégrée -->
+            <div class="mb-12 reveal slide-in-right">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Bloc de contenu à gauche -->
+                    <div class="order-2 md:order-1">
+                        <div class="glass-panel p-8 rounded-xl border-l-4 border-gold-400">
+                            <h3 class="serif-font text-2xl font-bold text-gold-600 mb-4">Jeunesse</h3>
+                            <p class="text-stone-700 leading-relaxed">
+                                Papa Michel dans sa jeunesse, portant sa veste élégante. Une période de sa vie où il a développé les valeurs qui l'ont caractérisé tout au long de son existence : l'intégrité, le dévouement et l'amour de la famille.
+                            </p>
+                            <div class="mt-4 pt-4 border-t border-gold-200">
+                                <p class="text-sm text-stone-600 italic">
+                                    "Un homme de grande sagesse et de cœur généreux"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo à droite -->
+                    <div class="order-1 md:order-2">
+                        <div class="relative">
+                            <img src="images/defunt_debout_en_veste_jeunesse.webp" class="w-full rounded-lg shadow-2xl transition-transform duration-700 hover:scale-105" alt="Papa Michel jeune">
+                            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-stone-800/30 rounded-lg"></div>
+                            <div class="absolute bottom-4 right-4 text-white">
+                                <p class="text-sm font-medium bg-stone-800/60 px-2 py-1 rounded">Jeunesse</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Timeline style biographie -->
+                <div class="relative">
+                    <!-- Ligne centrale timeline -->
+                    <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-gold-400 to-gold-200 transform md:-translate-x-1/2"></div>
+                    
+                    <!-- Naissance -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 reveal slide-in-left">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-4 md:mb-0">
+                            <h3 class="serif-font text-xl font-bold text-gold-600 mb-2">Naissance</h3>
+                        </div>
+                        <div class="w-4 h-4 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left">
+                            <div class="glass-panel p-6 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-700">
+                                    <strong>Papa CHAAZOU Michel</strong> est né en <span class="text-gold-600 font-bold">1948</span> à <strong>Bameng</strong>, dans la région du Centre au Cameroun.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vie familiale -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 reveal slide-in-right">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-4 md:mb-0 order-1 md:order-1">
+                            <h3 class="serif-font text-xl font-bold text-gold-600 mb-2">Vie Familiale</h3>
+                        </div>
+                        <div class="w-4 h-4 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)] order-2"></div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left order-3">
+                            <div class="glass-panel p-6 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-700">
+                                    Papa Michel a été un homme de famille dévoué. Il était marié et père de plusieurs enfants et petits-enfants, qu'il chérissait profondément.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vie professionnelle -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 reveal slide-in-left">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-4 md:mb-0">
+                            <h3 class="serif-font text-xl font-bold text-gold-600 mb-2">Vie Professionnelle</h3>
+                        </div>
+                        <div class="w-4 h-4 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left">
+                            <div class="glass-panel p-6 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-700">
+                                    De profession <strong class="text-gold-600">Plombier</strong>, Papa Michel a exercé son métier avec dévouement et compétence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vie religieuse -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between mb-12 reveal slide-in-right">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-4 md:mb-0 order-1 md:order-1">
+                            <h3 class="serif-font text-xl font-bold text-gold-600 mb-2">Vie Religieuse</h3>
+                        </div>
+                        <div class="w-4 h-4 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)] order-2"></div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left order-3">
+                            <div class="glass-panel p-6 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-700">
+                                    Papa Michel était un <strong class="text-gold-600">Chrétien Catholique</strong> fervent, une foi qu'il a maintenue tout au long de sa vie.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testament spirituel -->
+                <div class="glass-panel-dark p-10 rounded-xl border-l-4 border-gold-500 text-center reveal fade-in-scale">
+                    <div class="ornament-divider mb-6">
+                        <span>✞</span>
+                    </div>
+                    <p class="serif-font text-3xl font-bold text-stone-800 mb-4 italic">
+                        « Ce n'est ni par la puissance ni par la force, mais c'est par mon esprit, dit l'Éternel des armées. »
+                    </p>
+                    <p class="text-sm text-gold-600 font-semibold">Zacharie 4:6</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Programme -->
+    <section id="program" class="page-break py-12 px-6 section-bg-light relative">
+        <!-- Watermark subtil -->
+        <img src="images/defunt.png" class="watermark-bg" alt="Filigrane">
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal fade-in-up">
+                <h2 class="serif-font text-5xl text-gold-700 mb-4">Programme</h2>
+                <div class="ornament-divider">
+                    <span>✦</span>
+                </div>
+                <p class="text-stone-600 text-lg">Programme de la Cérémonie</p>
+            </div>
+
+            <!-- Photo assise intégrée -->
+            <div class="mb-12 reveal slide-in-right">
+                <div class="relative max-w-md mx-auto">
+                    <img src="images/defuntAssi.webp" class="w-full rounded-lg shadow-2xl transition-all duration-700 hover:scale-105 hover:shadow-3xl" alt="Papa Michel assis">
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-800/40 via-transparent to-transparent rounded-lg"></div>
+                    <div class="absolute bottom-4 right-4 text-white">
+                        <p class="text-sm font-medium bg-stone-800/60 px-2 py-1 rounded">En mémoire</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeudi 09 avril 2026 -->
+            <div class="mb-12 reveal slide-in-left">
+                <div class="glass-panel-dark p-6 rounded-t-xl border-l-4 border-gold-500">
+                    <h3 class="serif-font text-2xl font-bold text-stone-800">Jeudi 09 avril 2026</h3>
+                </div>
+                <div class="glass-panel rounded-b-xl overflow-hidden">
+                    <div class="p-8 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">13H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Levée de corps à la morgue de l'Hôpital Régional du Moungo (Nkongsamba)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">20H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Messe au domicile du Défunt sis au quartier 5 - Stade - suivie de la veillée jusqu'à l'aube</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vendredi 10 avril 2026 -->
+            <div class="mb-12 reveal slide-in-right">
+                <div class="glass-panel-dark p-6 rounded-t-xl border-l-4 border-gold-500">
+                    <h3 class="serif-font text-2xl font-bold text-stone-800">Vendredi 10 avril 2026</h3>
+                </div>
+                <div class="glass-panel rounded-b-xl overflow-hidden">
+                    <div class="p-8 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">04H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Départ du cortège funèbre pour le village Balengou</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">10H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Arrivée et installation de la dépouille au domicile familial</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">12H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Rafraîchissement</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">20H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Messe suivie de la veillée jusqu'à l'aube</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Samedi 11 avril 2026 -->
+            <div class="mb-12 reveal slide-in-left">
+                <div class="glass-panel-dark p-6 rounded-t-xl border-l-4 border-gold-500">
+                    <h3 class="serif-font text-2xl font-bold text-stone-800">Samedi 11 avril 2026</h3>
+                </div>
+                <div class="glass-panel rounded-b-xl overflow-hidden">
+                    <div class="p-8 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">07H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Accueil et installation des invités</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">08H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Arrivée des autorités administratives et traditionnelles</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">10H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Office religieux</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">11H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Inhumation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">12H00</div>
+                            <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400 flex-1">
+                                <p class="text-stone-700 font-medium">Collation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message de remerciement -->
+            <div class="glass-panel-dark p-8 rounded-xl border-l-4 border-gold-500 reveal fade-in-scale">
+                <div class="text-center">
+                    <div class="ornament-divider mb-6">
+                        <span>✞</span>
+                    </div>
+                    <p class="text-stone-700 font-medium text-lg">
+                        La famille remercie très sincèrement toutes les personnes qui, par leur présence, leurs prières et leurs marques de soutien, l'accompagneront dans cette épreuve douloureuse.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 5: Carte -->
+    <section id="carte" class="page-break py-12 px-6 section-bg-light relative">
+        <!-- Tissue Ndop en arrière-plan subtil -->
+        <div class="absolute inset-0 opacity-10">
+            <img src="images/tissue_traditionnelle.webp" class="w-full h-full object-cover" alt="Tissu Ndop traditionnel">
+        </div>
+        
+        <!-- Watermark subtil -->
+        <img src="images/defunt.png" class="watermark-bg" alt="Filigrane">
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal fade-in-up">
+                <h2 class="serif-font text-5xl text-gold-700 mb-4">Localisation</h2>
+                <div class="ornament-divider">
+                    <span>✦</span>
+                </div>
+                <p class="text-stone-600 text-lg">Itinéraire - Carte de Localisation</p>
+            </div>
+
+            <!-- Carte placeholder avec glass panel -->
+            <div class="glass-panel rounded-xl overflow-hidden mb-12 reveal fade-in-scale">
+                <div class="relative bg-gradient-to-br from-gold-100 to-gold-50 p-8 min-h-[500px]">
+                    <!-- Fleurs décoratives -->
+                    <img src="images/fleur.png" class="absolute top-4 left-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute top-4 right-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 left-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 right-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    
+                    <!-- Cartes images -->
+                    <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
+                        <div class="relative group">
+                            <img src="images/carte1.png" class="w-full max-w-sm rounded-lg shadow-xl transition-transform duration-500 group-hover:scale-105" alt="Carte de localisation 1">
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"></div>
+                        </div>
+                        <div class="relative group">
+                            <img src="images/carte2.png" class="w-full max-w-sm rounded-lg shadow-xl transition-transform duration-500 group-hover:scale-105" alt="Carte de localisation 2">
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-6">
+                        <h3 class="serif-font text-2xl font-bold text-stone-800 mb-2">Balengou</h3>
+                        <p class="text-stone-600 font-medium">Centre Cameroun</p>
+                        <p class="text-sm text-stone-500 mt-2">Village natal de la famille</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informations de localisation -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-gold-400 reveal slide-in-left">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="home" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="serif-font text-xl font-bold text-gold-600">Village Balengou</h3>
+                    </div>
+                    <p class="text-stone-700 text-sm">
+                        Localisation principale de la cérémonie. Village natal de la famille CHAAZOU, région du Centre Cameroun.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-gold-400 reveal slide-in-right">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="building" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="serif-font text-xl font-bold text-gold-600">Nkongsamba</h3>
+                    </div>
+                    <p class="text-stone-700 text-sm">
+                        Levée de corps à l'Hôpital Régional du Moungo. Première étape de la cérémonie (09 avril 2026).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Points de repère -->
+            <div class="glass-panel-dark p-8 rounded-xl border-l-4 border-gold-500 reveal fade-in-scale">
+                <h3 class="serif-font text-2xl font-bold text-stone-800 mb-6 text-center">Repères Géographiques</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold-600 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg glow-animation">1</div>
+                        <p class="font-semibold text-stone-800 mb-2">Hôpital Régional</p>
+                        <p class="text-sm text-stone-600">Nkongsamba<br>Levée de corps</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold-600 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg glow-animation">2</div>
+                        <p class="font-semibold text-stone-800 mb-2">Domicile</p>
+                        <p class="text-sm text-stone-600">Quartier 5 - Stade<br>Nkongsamba</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gold-600 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg glow-animation">3</div>
+                        <p class="font-semibold text-stone-800 mb-2">Village Balengou</p>
+                        <p class="text-sm text-stone-600">Cérémonie &<br>Inhumation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer amélioré -->
+    <footer class="no-print bg-stone-900 text-stone-400 py-16 px-6 relative overflow-hidden">
+        <!-- Fond décoratif subtil -->
+        <div class="absolute inset-0 opacity-5">
+            <img src="images/tissue_traditionnelle.webp" class="w-full h-full object-cover" alt="Tissu Ndop traditionnel">
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto">
+            <!-- Entête du footer avec croix dorée -->
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-32 border-t border-gold-600"></div>
+                    <div class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center mx-6">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m-9-9h18"></path>
+                        </svg>
+                    </div>
+                    <div class="w-32 border-t border-gold-600"></div>
+                </div>
+                <h2 class="serif-font text-5xl text-gold-500 mb-2">Papa Michel</h2>
+                <p class="text-stone-500 text-lg">1948 - 2026</p>
+            </div>
+
+            <!-- Contenu principal du footer -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Navigation -->
+                <div class="bg-stone-800/50 backdrop-blur-sm p-6 rounded-xl border-l-4 border-gold-700">
+                    <h3 class="font-bold text-gold-400 mb-4 text-xl">Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="hover:text-gold-300 transition-colors duration-300">Accueil</a></li>
+                        <li><a href="#presentation" class="hover:text-gold-300 transition-colors duration-300">Biographie</a></li>
+                        <li><a href="#program" class="hover:text-gold-300 transition-colors duration-300">Programme</a></li>
+                        <li><a href="#carte" class="hover:text-gold-300 transition-colors duration-300">Localisation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Informations -->
+                <div class="bg-stone-800/50 backdrop-blur-sm p-6 rounded-xl border-l-4 border-gold-700">
+                    <h3 class="font-bold text-gold-400 mb-4 text-xl">Informations</h3>
+                    <ul class="space-y-2">
+                        <li>Faire-part de décès</li>
+                        <li>Cérémonie funéraire</li>
+                        <li>Avril 2026</li>
+                    </ul>
+                </div>
+
+                <!-- Téléchargement -->
+                <div class="bg-stone-800/50 backdrop-blur-sm p-6 rounded-xl border-l-4 border-gold-700">
+                    <h3 class="font-bold text-gold-400 mb-4 text-xl">Téléchargement</h3>
+                    <a href="PROGRAMME_PAPA_MICHEL_OK.pdf" download="PROGRAMME_PAPA_MICHEL_OK.pdf" class="inline-flex items-center gap-2 bg-gold-600 hover:bg-gold-700 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span>PDF</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-stone-700 pt-8 text-center text-stone-400 text-sm">
+                <p>&copy; 2026 Famille CHAAZOU. Tous droits réservés. Hommage à Papa Michel.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation mobile toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Animation du bouton menu
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.setAttribute('data-lucide', 'menu');
+                } else {
+                    icon.setAttribute('data-lucide', 'x');
+                }
+                lucide.createIcons();
+            });
+            
+            // Fermer le menu au clic sur un lien
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                });
+            });
+        }
+
+        // Scroll reveal animations améliorées
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function revealOnScroll() {
+            revealElements.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Reveal elements on page load
+
+        // Smooth scroll pour les liens d'ancrage amélioré
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Offset pour la navigation fixe
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation des fleurs flottantes
+        const floatingFlowers = document.querySelectorAll('.float-animation');
+        floatingFlowers.forEach((flower, index) => {
+            flower.style.animationDelay = `${index * 0.5}s`;
+        });
+
+        // Animation glow pour les éléments importants
+        const glowElements = document.querySelectorAll('.glow-animation');
+        glowElements.forEach((element, index) => {
+            element.style.animationDelay = `${index * 0.3}s`;
+        });
+
+        // PDF Download avec confirmation
+        function downloadPDF() {
+            const element = document.body;
+            const opt = {
+                margin: 5,
+                filename: 'Papa_CHAAZOU_Michel_Faire_part.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, logging: false },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        // Effet parallaxe subtil sur le scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.watermark-bg');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Navigation scroll effect
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                nav.classList.remove('shadow-lg');
+            } else {
+                nav.classList.add('shadow-lg');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Initialisation des icônes Lucide
+        lucide.createIcons();
+        
+        // Animation d'entrée au chargement de la page
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            
+            // Animation séquentielle des éléments principaux
+            const heroElements = document.querySelectorAll('.hero-portrait, .glass-panel');
+            heroElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+
+</html>

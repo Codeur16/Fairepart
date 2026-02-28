@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FondationKJN - Hommage à Mama Jeannette</title>
+
+    <!-- Scripts & Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Favicon and touch icon -->
+    <link rel="icon" href="images/logo.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="images/logo.png">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            100: '#fbf8eb',
+                            200: '#f5edd1',
+                            300: '#ebd9a8',
+                            400: '#e0c582',
+                            500: '#d4af37',
+                            600: '#b48e2d', // Or Antique
+                            700: '#916f20',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            850: '#1c1917', // Encre presque noire
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Styles spécifiques pour l'impression et le rendu PDF */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .page-break {
+                page-break-after: always;
+            }
+
+            section {
+                min-height: 100vh;
+                height: auto;
+                padding-top: 0 !important;
+            }
+
+            /* Force background graphics */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* Animations douces */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        /* Effet papier texturé subtil */
+        .paper-texture {
+            background-color: #fafaf9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d6d3d1' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        /* Layout Fix: Start from top, no weird vertical centering centering that cuts off content */
+        .pdf-page {
+            min-height: 297mm;
+            /* Hauteur A4 approx */
+            padding-top: 5rem;
+            /* Espace pour le header sticky */
+            padding-bottom: 5rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            box-sizing: border-box;
+            background-color: transparent;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            /* Changé de center à flex-start */
+            align-items: center;
+            /* Centrage horizontal par défaut */
+            overflow: hidden;
+            /* Empêche les filigranes de déborder */
+        }
+
+        /* Glassmorphism / Blur Effect Classes */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .glass-panel-dark {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(180, 142, 45, 0.2);
+        }
+
+        /* Watermark Styles */
+        .watermark-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+
+        .watermark-corner {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="paper-texture text-stone-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar Sticky -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gold-200 no-print transition-all duration-300"
+        data-html2canvas-ignore="true">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <div class="flex justify-between items-center h-16">
+                <span class="font-serif text-xl text-gold-700 font-bold flex items-center gap-2">
+                    <!-- <i data-lucide="feather" class="w-5 h-5"></i> Fondation KJN -->
+                    <img src="images/Logo-no-bg.png" alt="Fondation KJN Logo" class="w-24 h-24 object-contain">
+                </span>
+
+
+
+                <div class="hidden md:flex space-x-6 text-xs font-bold uppercase tracking-widest text-stone-600">
+                    <a href="#page1"
+                        class="hover:text-gold-600 transition border-b-2 border-transparent hover:border-gold-400 py-1">Accueil</a>
+                    <a href="#page2"
+                        class="hover:text-gold-600 transition border-b-2 border-transparent hover:border-gold-400 py-1">Faire-Part</a>
+                    <a href="#page3"
+                        class="hover:text-gold-600 transition border-b-2 border-transparent hover:border-gold-400 py-1">Biographie</a>
+                    <a href="#page4"
+                        class="hover:text-gold-600 transition border-b-2 border-transparent hover:border-gold-400 py-1">Galerie</a>
+                    <a href="#page6"
+                        class="hover:text-gold-600 transition border-b-2 border-transparent hover:border-gold-400 py-1">Témoignages</a>
+                    <a href="#page7"
+                        class="hover:text-gold-600 transition border-b-2 border-transparent hover:border-gold-400 py-1">Programme</a>
+                    <a href="#page8"
+                        class="hover:text-gold-600 transition border-b-2 border-transparent hover:border-gold-400 py-1">Plan</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" aria-expanded="false" class="md:hidden text-stone-600">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu (hidden on md+) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm border-t border-gold-200">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#page1" class="block text-stone-700 font-bold uppercase tracking-wider">Accueil</a>
+                <a href="#page2" class="block text-stone-700 font-bold uppercase tracking-wider">Faire-Part</a>
+                <a href="#page3" class="block text-stone-700 font-bold uppercase tracking-wider">Biographie</a>
+                <a href="#page4" class="block text-stone-700 font-bold uppercase tracking-wider">Galerie</a>
+                <a href="#page6" class="block text-stone-700 font-bold uppercase tracking-wider">Témoignages</a>
+                <a href="#page7" class="block text-stone-700 font-bold uppercase tracking-wider">Programme</a>
+                <a href="#page8" class="block text-stone-700 font-bold uppercase tracking-wider">Plan</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Action Button PDF (direct download) -->
+    <a id="pdf-button" href="Faire-part-Mama-Jeannette.pdf" download="Faire-part-Mama-Jeannette.pdf"
+        class="fixed bottom-8 right-8 z-50 bg-gold-600 hover:bg-gold-700 text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 transition transform hover:scale-105 hover:-translate-y-1 no-print border-2 border-white/20 backdrop-blur-sm"
+        data-html2canvas-ignore="true" aria-label="Télécharger le PDF Faire-part">
+        <i data-lucide="download"></i>
+        <span class="font-bold tracking-wide">PDF</span>
+    </a>
+
+    <!-- Main Content -->
+    <main id="content-to-print"
+        class="max-w-[210mm] mx-auto bg-white shadow-2xl my-20 md:my-24 print:m-0 print:shadow-none print:w-full print:max-w-none">
+
+        <!-- PAGE 1: Célébration -->
+        <section id="page1" class="pdf-page page-break relative border-b-8 border-gold-100">
+            <!-- Filigrane Background Page 1 -->
+            <img src="images/image2.png" class="watermark-bg" alt="Filigrane">
+
+            <div class="reveal w-full max-w-2xl relative z-10 text-center mt-8">
+                <h2 class="text-xl md:text-2xl uppercase tracking-[0.3em] text-stone-500 mb-6">Célébration</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-10">
+                </div>
+
+                <h1 class="font-serif text-4xl md:text-5xl text-gold-700 mb-2 font-light">de vie de la</h1>
+                <h1 class="font-serif text-5xl md:text-7xl text-stone-850 font-bold mb-12 tracking-tight">Matriarche
+                </h1>
+
+                <!-- Photo Principale avec cadre travaillé -->
+                <div
+                    class="mx-auto w-64 h-80 relative group mb-12 shadow-2xl transition-transform duration-700 hover:scale-[1.02]">
+                    <div
+                        class="absolute inset-0 border-[6px] border-double border-gold-300 transform translate-x-2 translate-y-2 z-0">
+                    </div>
+                    <div class="absolute inset-0 bg-stone-200 z-10 overflow-hidden">
+                        <img src="images/image1.jpg" alt="Mama Jeannette"
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700">
+                    </div>
+                </div>
+
+                <div class="glass-panel p-8 rounded-sm mb-10">
+                    <div class="font-serif text-4xl md:text-5xl text-gold-700 mb-6 italic">
+                        Mama Jeannette
+                    </div>
+
+                    <div class="italic text-stone-600 px-4 border-l-2 border-gold-400">
+                        "J'ai combattu le bon combat, j'ai achevé la course, j'ai gardé la foi. Désormais la couronne de
+                        justice m'est réservée."
+                        <br><span
+                            class="text-xs font-bold not-italic mt-3 block text-gold-600 uppercase tracking-widest">2
+                            Timothée 4:7-8</span>
+                    </div>
+                </div>
+
+                <div class="text-xl font-bold text-stone-800 uppercase tracking-wide">
+                    Kouankep Jeannette
+                </div>
+                <div class="text-sm text-stone-500 mb-6 italic">épse feu Nguiengang Joseph</div>
+
+                <div
+                    class="inline-block border-t border-b border-gold-600 py-3 px-8 text-xl font-serif text-stone-800 bg-white/50 backdrop-blur-sm">
+                    1962 &mdash; <i data-lucide="infinity" class="w-4 h-4 inline text-gold-500 align-middle mx-1"></i>
+                    &mdash; 2025
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: Faire-Part -->
+        <section id="page2" class="pdf-page page-break bg-stone-50 relative">
+            <!-- Filigrane Background Page 2 -->
+            <img src="images/images7.png"
+                class="watermark-bg opacity-[0.1]" alt="Filigrane Fond">
+
+            <div class="relative z-10 w-full">
+                <div class="text-center mb-12 reveal">
+                    <h2
+                        class="font-serif text-3xl text-gold-700 uppercase border-b-2 border-gold-200 inline-block pb-4 px-8 tracking-widest">
+                        Faire - Part</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 text-sm text-center md:text-left">
+                    <!-- Col 1 -->
+                    <div class="space-y-8 reveal reveal-delay-1">
+                        <div class="glass-panel p-6 rounded-lg">
+                            <h3
+                                class="font-bold text-gold-700 uppercase mb-4 text-xs tracking-[0.15em] border-l-4 border-gold-400 pl-3">
+                                Les Grandes Familles</h3>
+                            <p class="text-stone-600 leading-relaxed font-light">
+                                KWACHIGNOU<br>
+                                NGOMEGE<br>
+                                MOUSSA KOUANKEP<br>
+                                MBA NTAKEP MWA'A<br>
+                                MEUKEP GAMO TIMOTHÉE
+                            </p>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-lg">
+                            <h3
+                                class="font-bold text-gold-700 uppercase mb-4 text-xs tracking-[0.15em] border-l-4 border-gold-400 pl-3">
+                                Les Familles</h3>
+                            <p class="text-stone-600 leading-relaxed text-xs font-light">
+                                FEU PAPA FENGANG PHILIPPE<br>
+                                FEU DJOMO JEAN MARIE<br>
+                                FEU POSSI ZACHARIE<br>
+                                FEU NGANDJO SARAH<br>
+                                FEU FENGANG PHILIPPE<br>
+                                FEU POSSI ADAMOU<br>
+                                NGOMEGE NORBERT "BATA"<br>
+                                NGUEPNANG CHARLOTTE ÉP. NDI AKAMA<br>
+                                NGANDJO ALBAN JEANVIER "BRILANG"<br>
+                                MAPEUH-NGUEP KELLA GAMO MAJOLIE SIDONIE ÉPSE SEUDIEU
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Col 2 -->
+                    <div class="space-y-8 reveal reveal-delay-2">
+                        <div class="glass-panel p-6 rounded-lg">
+                            <h3
+                                class="font-bold text-gold-700 uppercase mb-4 text-xs tracking-[0.15em] border-l-4 border-gold-400 pl-3">
+                                Les Enfants</h3>
+                            <p class="text-stone-600 leading-relaxed font-light">
+                                DJOMO GLADYS<br>
+                                SEUHOU LANDRY<br>
+                                POSSI APPOLIN<br>
+                                NGUOLEU TATIANA
+                            </p>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-lg">
+                            <h3
+                                class="font-bold text-gold-700 uppercase mb-4 text-xs tracking-[0.15em] border-l-4 border-gold-400 pl-3">
+                                Les Petits Enfants</h3>
+                            <p class="text-stone-600 leading-relaxed font-light">
+                                DJOMO TCHOUTSE MAZARINE LINSEY<br>
+                                FEU TCHAPDA TCHOUTSE WESLEY FOREST<br>
+                                NGUEPNANG ANDY ENZO<br>
+                                POSSI ETHAN APPOLIN<br>
+                                GAMO POSSI DELICE VIANNEY<br>
+                                POSSI JEANNETTE MBELO ALANA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center max-w-3xl mx-auto border-t border-gold-200 pt-10 reveal reveal-delay-3">
+                    <div class="bg-white/60 p-8 rounded-xl shadow-inner">
+                        <p class="font-serif text-lg leading-relaxed text-stone-700 italic">
+                            Ont le profond regret de vous faire part du décès de leur petite fille, fille, sœur, épouse,
+                            mère, grand-mère <br>
+                            <span class="font-bold text-stone-900 not-italic text-2xl my-2 block">Maman KOUANKEP
+                                Jeannette</span>
+                            <span class="text-sm uppercase tracking-wide text-stone-500">épouse de feu NGUIENGANG
+                                Joseph</span>
+                        </p>
+                        <div class="mt-6 flex items-center justify-center gap-4 text-stone-500">
+                            <span class="h-px w-12 bg-gold-400"></span>
+                            <span class="text-sm">Survenu le jeudi 30/10/2025 des suites de maladie</span>
+                            <span class="h-px w-12 bg-gold-400"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: Biographie -->
+        <section id="page3" class="pdf-page page-break relative bg-white">
+             <!-- Filigrane Background Page 3 -->
+           <img src="images/images8.png"
+                class="watermark-bg opacity-[0.05]" alt="Filigrane Fond">
+
+            <!-- 4 Coins Watermarks -->
+            <img src="images/fleur.png"
+                class="watermark-corner top-0 left-0 transform rotate-180" alt="Coin">
+            <img src="images/fleur.png"
+                class="watermark-corner top-0 right-0 transform -scale-x-100 rotate-180" alt="Coin">
+           <img src="images/fleur.png"
+                class="watermark-corner bottom-0 left-0 transform scale-x-100" alt="Coin">
+            <img src="images/fleur.png"
+                class="watermark-corner bottom-0 right-0 transform -scale-x-100" alt="Coin">
+
+            <div class="w-full z-10">
+                <h2 class="font-serif text-5xl text-center text-gold-700 mb-16 reveal">Biographie</h2>
+
+                <div class="relative space-y-12 max-w-4xl mx-auto px-4">
+                    <!-- Timeline decorative line -->
+                    <div
+                        class="absolute left-6 md:left-1/2 top-4 bottom-4 w-px bg-gold-300 hidden md:block transform -translate-x-1/2">
+                    </div>
+
+                    <!-- Items Loop -->
+                    <!-- Item 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between reveal">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-2 md:mb-0">
+                            <h3 class="font-bold uppercase text-stone-800 tracking-wider text-sm">Naissance</h3>
+                        </div>
+                        <div
+                            class="w-3 h-3 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)]">
+                        </div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left">
+                            <div class="glass-panel p-4 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-600 font-light">Née le <span
+                                        class="font-bold text-gold-700">24/07/1962</span> à Bangou Ville</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between reveal reveal-delay-1">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-2 md:mb-0 order-1 md:order-1">
+                            <h3 class="font-bold uppercase text-stone-800 tracking-wider text-sm">Vie Familiale</h3>
+                        </div>
+                        <div
+                            class="w-3 h-3 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)] order-2">
+                        </div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left order-3">
+                            <div class="glass-panel p-4 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-600 font-light">Épouse de feu Nguiengang Joseph, elle laisse
+                                    plusieurs enfants et petits-enfants.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between reveal reveal-delay-2">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-2 md:mb-0">
+                            <h3 class="font-bold uppercase text-stone-800 tracking-wider text-sm">Parcours Scolaire</h3>
+                        </div>
+                        <div
+                            class="w-3 h-3 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)]">
+                        </div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left">
+                            <div class="glass-panel p-4 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-600 font-light">Obtient son CEPE à l'École Primaire de Magba,
+                                    continue les études à St Jeanne d'Arc de Nkongsamba.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between reveal reveal-delay-1">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-2 md:mb-0">
+                            <h3 class="font-bold uppercase text-stone-800 tracking-wider text-sm">Profession</h3>
+                        </div>
+                        <div
+                            class="w-3 h-3 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)]">
+                        </div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left">
+                            <div class="glass-panel p-4 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-600 font-light">Commerçante à Mbanga et Loum.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between reveal reveal-delay-2">
+                        <div class="md:w-5/12 text-center md:text-right pr-0 md:pr-10 mb-2 md:mb-0">
+                            <h3 class="font-bold uppercase text-stone-800 tracking-wider text-sm">Vie Spirituelle</h3>
+                        </div>
+                        <div
+                            class="w-3 h-3 bg-white rounded-full border-2 border-gold-500 z-10 hidden md:block shadow-[0_0_0_4px_rgba(255,255,255,1)]">
+                        </div>
+                        <div class="md:w-5/12 pl-0 md:pl-10 text-center md:text-left">
+                            <div class="glass-panel p-4 rounded-lg inline-block text-left w-full">
+                                <p class="text-stone-600 font-light">Chrétienne Catholique baptisée, confirmée.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: Instants de Vie (Famille) -->
+        <section id="page4" class="pdf-page page-break bg-stone-50/50">
+            <div class="flex flex-col w-full text-center z-10">
+                <div class="mb-10 reveal">
+                    <h2 class="text-xs tracking-[0.5em] uppercase text-stone-400 mb-3">Galerie</h2>
+                    <h1 class="font-serif text-4xl md:text-5xl text-gold-700">Instants de Vie</h1>
+                    <h3 class="font-serif text-2xl text-stone-600 italic mt-1 font-light">En Famille</h3>
+                </div>
+
+                <!-- Collage Grid with hover effects -->
+                <div
+                    class=" h-auto flex flex-col gap-2  p-0 bg-white shadow-xl rounded-sm reveal reveal-delay-1">
+                    <div class="absolute col-span-2 row-span-2 relative overflow-hidden group">
+                        <img src="images/image4.png"
+                            class="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
+                            alt="Famille">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500">
+                        </div>
+                    </div>
+                    <div class="flex flex-row w-full h-auto gap-2 justify-between px-2">
+                    <div class="relative overflow-hidden group aspect-square">
+                        <img src="images/image5.png"
+                            class="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
+                            alt="Souvenir">
+                    </div>
+                    <div class="relative overflow-hidden group aspect-square">
+                        <img src="images/images9.png"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            alt="Souvenir">
+                    </div>
+                    </div>
+                    <!-- <div class="col-span-2 relative overflow-hidden group h-full">
+                        <img src="https://placehold.co/600x300/e5e5e5/a8a8a8?text=Photo+Paysage"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            alt="Souvenir">
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 5: Instants de Vie (Masonry) -->
+        <section id="page5" class="pdf-page page-break bg-stone-50">
+            <div class="flex flex-col w-full text-center z-10">
+                <div class="mb-10 reveal">
+                    <h1 class="font-serif text-4xl md:text-5xl text-gold-700">Instants</h1>
+                    <h3 class="font-serif text-2xl text-stone-600 italic mt-2 font-light">Précieux souvenirs</h3>
+                </div>
+
+                <!-- Masonry Layout with gap -->
+                <div class="columns-2 md:columns-3 gap-6 space-y-6 px-4">
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-1">
+                        <img src="images/images8.png"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-2">
+                        <img src="images/images10.png"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-1">
+                        <img src="images/images7.png"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-3">
+                        <img src="images/image1.jpg"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-2">
+                        <img src="images/image6.png"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-1">
+                        <img src="images/image5.png"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-1">
+                        <img src="images/image11.png"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                    <div
+                        class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-1">
+                        <img src="images/image12.png"
+                            class="w-full transition-transform duration-700 group-hover:scale-105" alt="Photo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 6: Témoignages -->
+        <section id="page6" class="pdf-page page-break bg-stone-100 relative">
+            <!-- Background Texture/Image for depth -->
+            <img src="images/image13.jpg" class="watermark-bg opacity-[0.5] absolute inset-0 pointer-events-none" alt="Filigrane Fond">
+
+            <div class="w-full z-10">
+                <h2 class="font-serif text-4xl text-center text-gold-700 mb-12 reveal">Témoignages</h2>
+
+                <div class="columns-1 md:columns-2 gap-6 space-y-6 text-sm text-justify text-stone-700 px-4">
+
+                    <!-- Intro text - Special Style -->
+                    <div
+                        class="break-inside-avoid glass-panel-dark p-8 rounded-xl shadow-lg border-l-4 border-gold-500 reveal">
+                        <p class="italic text-lg text-stone-800 leading-relaxed font-serif">"Ah oui, vous allez me dire,
+                            c'est parce que tu es assez fort pour le vivre ce deuil. Pas si sûre... Le silence dans la
+                            chambre, la réalité nous a rejoints. À quoi bon ce destin s'il vient nous chercher les
+                            meilleurs en premier?"</p>
+                    </div>
+
+                    <!-- Témoignage Box Style: Glass + Blur -->
+                    <div
+                        class="break-inside-avoid glass-panel p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow reveal reveal-delay-1">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="quote" class="text-gold-300 w-8 h-8 shrink-0 fill-current"></i>
+                            <div>
+                                <p class="mb-3 leading-relaxed">"Maman Jeannette, tu as été une belle mère
+                                    exceptionnelle. Ton amour, ta générosité vont nous manquer énormément. Repose en
+                                    paix maman."</p>
+                                <p class="text-right font-bold text-gold-700 uppercase text-xs tracking-wider">— Landry
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="break-inside-avoid glass-panel p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow reveal reveal-delay-2">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="quote" class="text-gold-300 w-8 h-8 shrink-0 fill-current"></i>
+                            <div>
+                                <p class="mb-3 leading-relaxed">"Ta belle fille Keline (comme tu aimais bien m'appeler).
+                                    Nous te disons merci pour l'amour que tu nous as donné. Tu resteras à jamais dans
+                                    nos cœurs."</p>
+                                <p class="text-right font-bold text-gold-700 uppercase text-xs tracking-wider">— Keline
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="break-inside-avoid glass-panel p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow reveal reveal-delay-1">
+                        <h4 class="font-bold text-stone-800 mb-2">Ma seconde Maman à moi,</h4>
+                        <p class="mb-3 leading-relaxed">"Ma lionne... Après le décès de maman Marie-Madeleine en 1991,
+                            tu as tout abandonné pour venir nous encadrer Guy et moi comme une Amazone! Tu m'as appris à
+                            bien parler le Bangou avec gaieté et sagesse."</p>
+                        <p class="text-right font-bold text-gold-700 uppercase text-xs tracking-wider">— Ta nièce et
+                            fille adorée</p>
+                    </div>
+
+                    <div
+                        class="break-inside-avoid glass-panel p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow reveal reveal-delay-3">
+                        <p class="mb-3 italic font-serif text-stone-600">"Mama za'a jea we will always cherish the
+                            memories of the moment we spend with you. You will remain my pillars of strengths. Good
+                            night ngou koua till meet again."</p>
+                        <p class="text-right font-bold text-gold-700 uppercase text-xs tracking-wider">— Ta djoo,
+                            Mpeuh-Nguep Keila</p>
+                    </div>
+
+                    <div
+                        class="break-inside-avoid glass-panel p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow reveal reveal-delay-2">
+                        <h4 class="font-bold text-stone-800 mb-2">Mamie,</h4>
+                        <p class="mb-3 leading-relaxed">"Je n'aurais jamais imaginé devoir te dire au revoir si tôt...
+                            Toute ma vie, j'ai voulu te rendre fière. Tu m'as donné de l'amour, inculqué la patience et
+                            la force. Repose en paix ma grand-mère."</p>
+                        <p class="text-right font-bold text-gold-700 uppercase text-xs tracking-wider">— Ta petite fille
+                            Maza</p>
+                    </div>
+
+                    <div
+                        class="break-inside-avoid glass-panel-dark p-6 rounded-lg shadow-md reveal reveal-delay-1 border border-stone-200">
+                        <p class="mb-3 leading-relaxed font-medium">"ZA'A JEA ma femme, ma chérie coco à moi bien que tu
+                            ne sois plus là, ton esprit généreux et aimant continue de vivre dans ceux que tu as aimés."
+                        </p>
+                        <p class="text-right font-bold text-stone-900 uppercase text-xs tracking-wider">— Ton mari SOP
+                            GUIENGANG</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 7: Programme -->
+        <section id="page7" class="pdf-page page-break flex flex-col items-center bg-white">
+ <!-- Filigrane Background Page 3 -->
+           <img src="images/image2.png"
+                class="watermark-bg opacity-[0.05]" alt="Filigrane Fond">
+
+
+            <div class="w-full z-10 max-w-2xl reveal">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-5xl text-gold-700 mb-3">Programme</h2>
+                    <p class="uppercase tracking-[0.2em] text-stone-400 text-lg font-bold">Du 04 au 06 Décembre 2025</p>
+                </div>
+
+                <div class="space-y-12 pl-4">
+
+                    <!-- Day 1 -->
+                    <div class="relative pl-10 border-l border-dashed border-stone-300 pb-2 group">
+                        <div
+                            class="absolute -left-[25px] top-0 w-12 h-12 bg-white rounded-full border-2 border-gold-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="font-bold text-gold-700 text-lg">04</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 uppercase mb-6 pl-2 pt-2">Décembre 2025</h3>
+                        <ul
+                            class="space-y-4 text-stone-600 bg-stone-50 p-6 rounded-r-xl border-l-4 border-gold-400 shadow-sm hover:shadow-md transition-shadow">
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">10h00</span> <span>Levée du
+                                    corps à la morgue communale de Loum</span></li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">11h00</span> <span>Départ
+                                    pour le domicile de la défunte et installation (Face stade municipal de Loum)</span>
+                            </li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">19h00</span> <span>Début de
+                                    la messe</span></li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">21h00</span> <span>Veillée
+                                    avec corps - Mini collation, départ cortège 04h00</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="relative pl-10 border-l border-dashed border-stone-300 pb-2 group">
+                        <div
+                            class="absolute -left-[25px] top-0 w-12 h-12 bg-white rounded-full border-2 border-gold-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="font-bold text-gold-700 text-lg">05</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 uppercase mb-6 pl-2 pt-2">Décembre 2025</h3>
+                        <ul
+                            class="space-y-4 text-stone-600 bg-stone-50 p-6 rounded-r-xl border-l-4 border-gold-400 shadow-sm hover:shadow-md transition-shadow">
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">10h00</span> <span>Arrivée
+                                    du corps à son domicile</span></li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">10h30</span>
+                                <span>Installation de la dépouille</span></li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">18h00</span> <span>Messe et
+                                    veillée jusqu'à l'aube</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="relative pl-10 border-l-0 border-stone-300 group">
+                        <div
+                            class="absolute -left-[25px] top-0 w-12 h-12 bg-gold-600 rounded-full border-2 border-gold-600 flex items-center justify-center shadow-lg text-white group-hover:scale-110 transition-transform">
+                            <span class="font-bold text-lg">06</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 uppercase mb-6 pl-2 pt-2">Décembre 2025</h3>
+                        <ul
+                            class="space-y-4 text-stone-600 bg-stone-50 p-6 rounded-r-xl border-l-4 border-stone-800 shadow-sm hover:shadow-md transition-shadow">
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">08h00</span>
+                                <span>Installation des invités & Mise en place</span></li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">09h30</span>
+                                <span>Messe</span></li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">11h00</span>
+                                <span>Témoignages</span></li>
+                            <li class="flex gap-4"><span
+                                    class="font-bold text-gold-700 w-16 text-right shrink-0">11h45</span>
+                                <span>Inhumation dans la stricte intimité</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="mt-16 text-center reveal reveal-delay-3">
+                    <p class="font-serif text-3xl italic text-gold-700">Va et repose en paix !</p>
+                </div>
+            </div>
+        </section>
+
+<!-- PAGE 8: Localisation -->
+        <section id="page8" class="pdf-page page-break flex flex-col justify-center bg-stone-50">
+             <h2 class="font-serif text-5xl text-gold-700 mb-3">Localisation</h2>
+            
+            <!-- Map Container Styling -->
+            <div class="relative w-full h-[600px] bg-[#e8e4db] border-4 border-white shadow-2xl rounded-sm overflow-hidden p-0 reveal reveal-delay-1" id="map-image-container">
+                <img src="images/image3.png" alt="Plan de localisation"
+                    class="absolute inset-0 w-full h-full object-contain object-center grayscale-[20%] hover:grayscale-0 transition-all duration-700"/>
+
+                <!-- floating label -->
+                <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-sm p-3 rounded shadow-md border border-stone-200 text-xs font-bold">
+                    Bangou Ville • Cameroun
+                </div>
+            </div>
+            
+            <p class="text-center text-stone-400 text-xs mt-6 italic reveal reveal-delay-2">Représentation schématique du plan d'accès • Fondation KJN</p>
+        </section>
+
+
+       
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative bg-stone-900 text-gold-200 py-12 text-center no-print" data-html2canvas-ignore="true">
+        <i data-lucide="heart-handshake" class="w-8 h-8 mx-auto mb-4 text-gold-600 opacity-80"></i>
+        
+        <p class="font-serif text-xl tracking-wide">À la mémoire éternelle de Mama Jeannette</p>
+        <p class="text-xs text-stone-600 mt-4 uppercase tracking-widest">© 2025 - Fondation KJN</p>
+
+        <div class="mt-4">
+            <p class="text-sm text-gold-200 font-bold">Contact</p>
+            <p class="text-sm text-white/90"><span class="font-bold">Tatiana Gouleu</span> — <a href="tel:+23774475609" class="underline hover:text-white">+237 74475609</a></p>
+        </div>
+
+        <!-- Background watermark (discreet) -->
+        <div class="absolute inset-0 pointer-events-none flex items-end justify-center z-0">
+            <span class="text-white/10 text-sm md:text-base pb-4 font-medium">Powered by <span class="font-bold">GOCAS.be</span></span>
+        </div>
+    </footer>
+
+    <script>
+        // Initialisation des icônes
+        lucide.createIcons();
+
+        // Fonction de génération PDF optimisée (version async avec gestion d'erreurs)
+        async function generatePDF() {
+            const element = document.getElementById('content-to-print');
+            const fab = document.getElementById('pdf-button');
+
+            // Overlay non bloquant
+            const overlay = document.createElement('div');
+            overlay.id = 'pdf-loading-overlay';
+            overlay.style.pointerEvents = 'none';
+            overlay.innerHTML = `
+                <div class="fixed bottom-8 right-8 z-50 pointer-events-none">
+                    <div class="bg-gold-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2">
+                        <i data-lucide="loader-2" class="animate-spin"></i>
+                        <span class="font-bold">Génération...</span>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            lucide.createIcons();
+
+            const opt = {
+                margin: 0,
+                filename: 'Faire-Part_Mama_Jeannette.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    imageTimeout: 20000,
+                    allowTaint: false,
+                    scrollY: 0,
+                    letterRendering: true
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            try {
+                if (typeof html2pdf !== 'function') throw new Error('html2pdf non défini. Vérifiez le chargement du script.');
+
+                // Disable the FAB to avoid multiple clicks
+                if (fab) fab.setAttribute('disabled', 'disabled');
+
+                // Tentative : recharger les images avec crossOrigin si possible
+                const imgs = Array.from(element.querySelectorAll('img'));
+                await Promise.all(imgs.map(img => new Promise(resolve => {
+                    try {
+                        const src = img.currentSrc || img.src || '';
+                        // skip data URIs and same-origin images
+                        if (!src || src.startsWith('data:') || src.startsWith(window.location.origin) || src.startsWith('/')) return resolve();
+                        // set crossOrigin and try to preload via a new Image
+                        const test = new Image();
+                        test.crossOrigin = 'anonymous';
+                        test.onload = () => resolve();
+                        test.onerror = () => {
+                            console.warn('Image CORS/load failed for', src);
+                            resolve();
+                        };
+                        // add cache-buster to force reload
+                        test.src = src + (src.includes('?') ? '&' : '?') + 'cors=1&cb=' + Date.now();
+                    } catch (e) { resolve(); }
+                })));
+
+                // After attempted reloads, proceed to generate PDF
+
+                // Await the save to ensure completion
+                await html2pdf().set(opt).from(element).save();
+            } catch (err) {
+                console.error('Erreur génération PDF:', err);
+                alert('Erreur lors de la génération du PDF. Ouvrez la console pour plus de détails.');
+            } finally {
+                // Cleanup overlay and re-enable FAB
+                const e = document.getElementById('pdf-loading-overlay');
+                if (e) e.remove();
+                if (fab) fab.removeAttribute('disabled');
+                lucide.createIcons();
+            }
+        }
+
+            // Mobile menu toggle
+            (function(){
+                const btn = document.getElementById('mobile-menu-button');
+                const menu = document.getElementById('mobile-menu');
+                if (!btn || !menu) return;
+                btn.addEventListener('click', () => {
+                    const isHidden = menu.classList.contains('hidden');
+                    if (isHidden) {
+                        menu.classList.remove('hidden');
+                        btn.setAttribute('aria-expanded','true');
+                        btn.innerHTML = '<i data-lucide="x"></i>';
+                    } else {
+                        menu.classList.add('hidden');
+                        btn.setAttribute('aria-expanded','false');
+                        btn.innerHTML = '<i data-lucide="menu"></i>';
+                    }
+                    lucide.createIcons();
+                });
+                // Close menu when a link is clicked (mobile)
+                menu.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                        btn.setAttribute('aria-expanded','false');
+                        btn.innerHTML = '<i data-lucide="menu"></i>';
+                        lucide.createIcons();
+                    });
+                });
+            })();
+
+        // Animation au scroll (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Déclenche l'animation quand 15% de l'élément est visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
