@@ -9,6 +9,8 @@
     <!-- Scripts & Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1107,22 +1109,14 @@
                     <!-- Cartes statiques et Google Maps interactives -->
                     <div class="space-y-8">
                         <!-- Cartes statiques (captures d'écran) -->
+                          <h3 class="serif-font text-2xl font-bold text-stone-800 mb-2 text-center ">Nkongsamba </h3>
                         <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
                             <div class="relative group">
                                 <img src="images/carte1.png" class="w-full max-w-sm rounded-lg shadow-xl transition-transform duration-500 group-hover:scale-105" alt="Carte de Nkongsamba">
                                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"></div>
                                 <div class="absolute bottom-2 left-2 bg-black/60 text-white px-2 py-1 rounded text-xs">Nkongsamba</div>
                             </div>
-                            <div class="relative group">
-                                <img src="images/carte2.png" class="w-full max-w-sm rounded-lg shadow-xl transition-transform duration-500 group-hover:scale-105" alt="Carte de Balengou">
-                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"></div>
-                                <div class="absolute bottom-2 left-2 bg-black/60 text-white px-2 py-1 rounded text-xs">Balengou</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Google Maps interactives -->
-                        <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
-                            <div class="relative group">
+                             <div class="relative group">
                                 <div class="w-full max-w-sm rounded-lg shadow-xl overflow-hidden">
                                     <iframe 
                                         src="https://maps.google.com/maps?q=Nkongsamba,Cameroon&t=m&z=13&output=embed&iwloc=near"
@@ -1136,6 +1130,17 @@
                                     </iframe>
                                 </div>
                                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 rounded-lg pointer-events-none"></div>
+                            </div>
+                           
+                        </div>
+                        
+                        <!-- Google Maps interactives -->
+                         <h3 class="serif-font text-2xl font-bold text-stone-800 mb-2 text-center ">Balengou </h3>
+                        <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
+                            <div class="relative group">
+                                <img src="images/carte2.png" class="w-full max-w-sm rounded-lg shadow-xl transition-transform duration-500 group-hover:scale-105" alt="Carte de Balengou">
+                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"></div>
+                                <div class="absolute bottom-2 left-2 bg-black/60 text-white px-2 py-1 rounded text-xs">Balengou</div>
                             </div>
                             <div class="relative group">
                                 <div class="w-full max-w-sm rounded-lg shadow-xl overflow-hidden">
@@ -1157,7 +1162,7 @@
                     
                     <div class="text-center mt-6">
                         <h3 class="serif-font text-2xl font-bold text-stone-800 mb-2">Balengou</h3>
-                        <p class="text-stone-600 font-medium">Centre Cameroun</p>
+                        <p class="text-stone-600 font-medium">Ouest Cameroun</p>
                         <p class="text-sm text-stone-500 mt-2">Village natal de la famille</p>
                         <div class="flex justify-center gap-4 mt-4">
                             <a href="https://maps.apple.com/?address=Nkongsamba,%20Cameroon&auid=8384184077808897331&ll=4.951702,9.936371&lsp=7618&q=Nkongsamba&t=m" 
@@ -1222,6 +1227,259 @@
                         <div class="w-16 h-16 bg-gold-600 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg glow-animation">3</div>
                         <p class="font-semibold text-stone-800 mb-2">Village Balengou</p>
                         <p class="text-sm text-stone-600">Cérémonie &<br>Inhumation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Avis et Condoléances -->
+    <section id="avis" class="py-20 px-4 bg-gradient-to-br from-stone-50 to-stone-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="serif-font text-4xl font-bold text-stone-800 mb-4">
+                    <i data-lucide="heart" class="w-8 h-8 inline text-red-500 mr-3"></i>
+                    Messages de Condoléances
+                </h2>
+                <p class="text-stone-600 max-w-2xl mx-auto">
+                    Les messages de soutien et de réconfort de la communauté
+                </p>
+            </div>
+            
+            <!-- Carousel horizontal des avis -->
+            <div class="relative">
+                <!-- Boutons de navigation -->
+                <button id="carouselPrev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gold-600 hover:bg-gold-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 transform hover:scale-110">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button id="carouselNext" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gold-600 hover:bg-gold-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 transform hover:scale-110">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+                
+                <!-- Conteneur du carousel -->
+                <div class="overflow-hidden mx-12">
+                    <div id="avisCarousel" class="flex gap-6 transition-transform duration-500 ease-in-out">
+                        <!-- Les messages seront insérés ici -->
+                    </div>
+                </div>
+                
+                <!-- Indicateurs de position -->
+                <div id="carouselIndicators" class="flex justify-center gap-2 mt-6">
+                    <!-- Indicateurs générés dynamiquement -->
+                </div>
+            </div>
+            
+            <!-- Formulaire de condoléances -->
+            <div class="mt-16 max-w-2xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-8 relative overflow-hidden">
+                    <img src="images/fleur.png" class="absolute top-4 left-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute top-4 right-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 left-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 right-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="serif-font text-2xl font-bold text-stone-800 mb-2">Laissez votre message</h3>
+                        <p class="text-stone-600">Vos condoléances seront partagées avec la famille</p>
+                    </div>
+                    
+                    <!-- Formulaire de condoléances personnalisé -->
+                    <div class="bg-white rounded-lg shadow-inner p-6">
+                        <form id="condolenceForm" class="space-y-4">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-gold-100 rounded-full mx-auto mb-3 flex items-center justify-center">
+                                    <i data-lucide="heart" class="w-8 h-8 text-gold-600"></i>
+                                </div>
+                                <h4 class="serif-font text-xl font-bold text-stone-800">Partagez vos condoléances</h4>
+                                <p class="text-sm text-stone-600 mt-1">Vos messages seront visibles publiquement</p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 inline mr-1"></i>
+                                    Votre nom complet
+                                </label>
+                                <input type="text" id="nom" required 
+                                       class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Entrez votre nom">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="users" class="w-4 h-4 inline mr-1"></i>
+                                    Votre relation avec Papa Michel
+                                </label>
+                                <select id="relation" required 
+                                        class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200">
+                                    <option value="">Sélectionnez votre relation</option>
+                                    <option value="Famille">Membre de la famille</option>
+                                    <option value="Ami">Ami(e)</option>
+                                    <option value="Voisin">Voisin(e)</option>
+                                    <option value="Collègue">Collègue de travail</option>
+                                    <option value="Connaissance">Connaissance</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="message-circle" class="w-4 h-4 inline mr-1"></i>
+                                    Votre message de condoléances
+                                </label>
+                                <textarea id="message" rows="4" required 
+                                          class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
+                                          placeholder="Exprimez vos condoléances et vos souvenirs..."></textarea>
+                            </div>
+                            
+                            <div class="flex items-center gap-2 text-sm text-stone-600">
+                                <i data-lucide="lock" class="w-4 h-4"></i>
+                                <span>Votre message sera publié immédiatement</span>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-gold-600 to-gold-700 hover:from-gold-700 hover:to-gold-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                Envoyer votre message
+                            </button>
+                        </form>
+                        
+                        <div id="formMessage" class="mt-4 hidden">
+                            <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>
+                                <div>
+                                    <p class="font-medium">Merci pour votre message</p>
+                                    <p class="text-sm">Il a été ajouté aux condoléances ci-dessous</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-6">
+                        <p class="text-sm text-stone-500 italic">
+                            <i data-lucide="heart" class="w-4 h-4 inline text-red-500"></i>
+                            Merci pour votre soutien et vos messages réconfortants
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Avis et Condoléances -->
+    <section class="py-12 px-6 section-bg-light relative">
+        <!-- Watermark subtil -->
+       
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal fade-in-up">
+                <h2 class="serif-font text-5xl text-gold-700 mb-4">Avis et Condoléances</h2>
+                <div class="ornament-divider">
+                    <span>✦</span>
+                </div>
+                <p class="text-stone-600 text-lg">Partagez vos souvenirs et messages</p>
+            </div>
+
+            <!-- Formulaire Google Forms -->
+            <div class="glass-panel rounded-xl overflow-hidden reveal fade-in-scale">
+                <div class="bg-gradient-to-br from-gold-100 to-gold-50 p-8">
+                    <!-- Fleurs décoratives -->
+                    <img src="images/fleur.png" class="absolute top-4 left-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute top-4 right-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 left-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 right-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="serif-font text-2xl font-bold text-stone-800 mb-2">Laissez votre message</h3>
+                        <p class="text-stone-600">Vos condoléances seront partagées avec la famille</p>
+                    </div>
+                    
+                    <!-- Formulaire de condoléances personnalisé -->
+                    <div class="bg-white rounded-lg shadow-inner p-6">
+                        <form id="condolenceForm" class="space-y-4">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-gold-100 rounded-full mx-auto mb-3 flex items-center justify-center">
+                                    <i data-lucide="heart" class="w-8 h-8 text-gold-600"></i>
+                                </div>
+                                <h4 class="serif-font text-xl font-bold text-stone-800">Partagez vos condoléances</h4>
+                                <p class="text-sm text-stone-600 mt-1">Vos messages seront visibles publiquement</p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 inline mr-1"></i>
+                                    Votre nom complet
+                                </label>
+                                <input type="text" id="nom" required 
+                                       class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Entrez votre nom">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="users" class="w-4 h-4 inline mr-1"></i>
+                                    Votre relation avec Papa Michel
+                                </label>
+                                <select id="relation" required 
+                                        class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200">
+                                    <option value="">Sélectionnez votre relation</option>
+                                    <option value="Famille">Membre de la famille</option>
+                                    <option value="Ami">Ami(e)</option>
+                                    <option value="Voisin">Voisin(e)</option>
+                                    <option value="Collègue">Collègue de travail</option>
+                                    <option value="Connaissance">Connaissance</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="message-circle" class="w-4 h-4 inline mr-1"></i>
+                                    Votre message de condoléances
+                                </label>
+                                <textarea id="message" rows="4" required 
+                                          class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
+                                          placeholder="Exprimez vos condoléances et vos souvenirs..."></textarea>
+                            </div>
+                            
+                            <div class="flex items-center gap-2 text-sm text-stone-600">
+                                <i data-lucide="lock" class="w-4 h-4"></i>
+                                <span>Votre message sera publié immédiatement</span>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-gold-600 to-gold-700 hover:from-gold-700 hover:to-gold-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                Envoyer votre message
+                            </button>
+                        </form>
+                        
+                        <div id="formMessage" class="mt-4 hidden">
+                            <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>
+                                <div>
+                                    <p class="font-medium">Merci pour votre message</p>
+                                    <p class="text-sm">Il a été ajouté aux condoléances ci-dessous</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-6">
+                        <p class="text-sm text-stone-500 italic">
+                            <i data-lucide="heart" class="w-4 h-4 inline text-red-500"></i>
+                            Merci pour votre soutien et vos messages réconfortants
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Affichage des avis existants -->
+            <div class="mt-12 glass-panel p-6 rounded-xl reveal slide-in-left">
+                <h3 class="serif-font text-xl font-bold text-gold-600 mb-4">Messages récents</h3>
+                <div class="space-y-4" id="avisRecent">
+                    <!-- Les avis seront affichés ici via Google Sheets -->
+                    <div class="text-center py-8 text-stone-500">
+                        <i data-lucide="message-circle" class="w-8 h-8 mx-auto mb-2 text-gold-600"></i>
+                        <p>Les messages apparaîtront ici après soumission</p>
                     </div>
                 </div>
             </div>
@@ -1426,7 +1684,391 @@
                     element.style.transform = 'translateY(0)';
                 }, index * 200);
             });
+
+            // Initialiser la base de données Supabase
+            initSupabase();
         });
+
+        // Base de données Supabase pour les condoléances
+        let supabaseClient = null;
+        
+        // Initialiser Supabase
+        function initSupabaseClient() {
+            const supabaseUrl = window.SUPABASE_CONFIG?.url || 'https://zzyamtisilnnzffczjem.supabase.co';
+            const supabaseKey = window.SUPABASE_CONFIG?.anonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6eWFtdGlzaWxubnpmZmN6amVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyODg1ODgsImV4cCI6MjA4Nzg2NDU4OH0.R9teR5chNRfVZaMU08m1jP8jFLh1Fscjrcfci34uTJ0';
+            supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+        }
+        
+        // Initialiser Supabase
+        async function initSupabase() {
+            try {
+                // Initialiser le client Supabase
+                initSupabaseClient();
+                
+                console.log('Connexion à Supabase...');
+                await chargerMessagesSupabase();
+            } catch (error) {
+                console.error('Erreur Supabase:', error);
+                // Fallback vers localStorage
+                initFallback();
+            }
+        }
+        
+        // Charger les messages depuis Supabase
+        async function chargerMessagesSupabase() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('messages')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                
+                if (error) {
+                    console.error('Erreur de chargement:', error);
+                    afficherMessagesDemo();
+                    return;
+                }
+                
+                if (data && data.length > 0) {
+                    afficherMessagesSupabase(data);
+                } else {
+                    afficherMessagesDemo();
+                }
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                afficherMessagesDemo();
+            }
+        }
+        
+        // Carousel functionality
+        let currentSlide = 0;
+        let autoScrollInterval;
+        let messages = [];
+        
+        // Initialiser le carousel
+        function initCarousel() {
+            const carousel = document.getElementById('avisCarousel');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            
+            if (!carousel) return;
+            
+            // Navigation manuelle
+            prevBtn?.addEventListener('click', () => {
+                clearInterval(autoScrollInterval);
+                navigateCarousel(-1);
+                startAutoScroll();
+            });
+            
+            nextBtn?.addEventListener('click', () => {
+                clearInterval(autoScrollInterval);
+                navigateCarousel(1);
+                startAutoScroll();
+            });
+            
+            // Démarrer le défilement automatique
+            startAutoScroll();
+        }
+        
+        // Navigation du carousel
+        function navigateCarousel(direction) {
+            const carousel = document.getElementById('avisCarousel');
+            if (!carousel || messages.length === 0) return;
+            
+            currentSlide += direction;
+            
+            // Gérer les limites
+            if (currentSlide < 0) currentSlide = Math.max(0, messages.length - getVisibleItems());
+            if (currentSlide >= messages.length) currentSlide = 0;
+            
+            updateCarouselPosition();
+            updateIndicators();
+        }
+        
+        // Mettre à jour la position du carousel
+        function updateCarouselPosition() {
+            const carousel = document.getElementById('avisCarousel');
+            if (!carousel) return;
+            
+            const itemWidth = 400; // Largeur fixe + gap
+            const offset = currentSlide * itemWidth;
+            carousel.style.transform = `translateX(-${offset}px)`;
+        }
+        
+        // Obtenir le nombre d'éléments visibles
+        function getVisibleItems() {
+            const containerWidth = window.innerWidth - 96; // mx-12 * 8
+            return Math.floor(containerWidth / 400);
+        }
+        
+        // Mettre à jour les indicateurs
+        function updateIndicators() {
+            const indicators = document.getElementById('carouselIndicators');
+            if (!indicators || messages.length === 0) return;
+            
+            const totalSlides = Math.ceil(messages.length / getVisibleItems());
+            const currentSlideIndex = Math.floor(currentSlide / getVisibleItems());
+            
+            indicators.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === currentSlideIndex ? 'bg-gold-600 w-8' : 'bg-stone-300'
+                }`;
+                dot.addEventListener('click', () => {
+                    clearInterval(autoScrollInterval);
+                    currentSlide = i * getVisibleItems();
+                    updateCarouselPosition();
+                    updateIndicators();
+                    startAutoScroll();
+                });
+                indicators.appendChild(dot);
+            }
+        }
+        
+        // Démarrer le défilement automatique
+        function startAutoScroll() {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(() => {
+                if (messages.length > getVisibleItems()) {
+                    navigateCarousel(1);
+                }
+            }, 4000); // Défilement toutes les 4 secondes
+        }
+        
+        // Afficher les messages dans le carousel
+        function afficherMessagesSupabase(messagesData) {
+            messages = messagesData;
+            const carousel = document.getElementById('avisCarousel');
+            
+            if (!carousel) return;
+            
+            carousel.innerHTML = '';
+            
+            if (messages.length === 0) {
+                carousel.innerHTML = `
+                    <div class="flex-shrink-0 w-96 bg-white/80 p-6 rounded-xl shadow-lg border-l-4 border-gold-400 text-center">
+                        <i data-lucide="message-circle" class="w-12 h-12 mx-auto mb-4 text-gold-600"></i>
+                        <p class="text-stone-600">Soyez le premier à laisser un message</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+            
+            messages.forEach((message, index) => {
+                const messageCard = document.createElement('div');
+                messageCard.className = 'flex-shrink-0 w-96 bg-white/80 p-6 rounded-xl shadow-lg border-l-4 border-gold-400 hover:shadow-xl transition-all duration-300';
+                messageCard.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <h4 class="font-bold text-gold-600 flex items-center gap-2">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                            ${message.nom}
+                        </h4>
+                        <span class="text-xs text-stone-500">${formatDate(message.created_at || message.date)}</span>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gold-100 text-gold-800">
+                            <i data-lucide="users" class="w-3 h-3 mr-1"></i>
+                            ${message.relation || 'Non spécifié'}
+                        </span>
+                    </div>
+                    <p class="text-stone-700 leading-relaxed mb-3">${message.message}</p>
+                    <div class="flex items-center gap-2 text-xs text-stone-400">
+                        <i data-lucide="database" class="w-3 h-3"></i>
+                        <span>ID: ${message.id} | Stocké dans Supabase</span>
+                    </div>
+                `;
+                carousel.appendChild(messageCard);
+            });
+            
+            // Recréer les icônes
+            lucide.createIcons();
+            
+            // Initialiser le carousel
+            initCarousel();
+            updateIndicators();
+        }
+        
+        // Ajouter un nouveau message au carousel
+        function ajouterMessageAffichageSupabase(message) {
+            messages.unshift(message);
+            afficherMessagesSupabase(messages);
+        }
+        
+        // Gestion du formulaire avec Supabase
+        document.getElementById('condolenceForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const nom = document.getElementById('nom').value.trim();
+            const relation = document.getElementById('relation').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!nom || !relation || !message) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            try {
+                // Insérer dans Supabase avec tous les champs
+                const { data, error } = await supabaseClient
+                    .from('messages')
+                    .insert([
+                        {
+                            nom: nom,
+                            relation: relation,
+                            message: message,
+                            created_at: new Date().toISOString()
+                        }
+                    ])
+                    .select();
+                
+                if (error) {
+                    console.error('Erreur Supabase:', error);
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                    return;
+                }
+                
+                // Ajouter à l'affichage
+                if (data && data[0]) {
+                    ajouterMessageAffichageSupabase(data[0]);
+                }
+                
+                // Afficher la confirmation
+                afficherConfirmation();
+                
+                // Réinitialiser le formulaire
+                this.reset();
+                
+                console.log('Message inséré avec ID:', data[0]?.id);
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue. Veuillez réessayer.');
+            }
+        });
+        
+        // Fallback vers localStorage si Supabase échoue
+        function initFallback() {
+            console.log('Utilisation du fallback localStorage');
+            
+            // Charger depuis localStorage
+            const messages = JSON.parse(localStorage.getItem('condoleances') || '[]');
+            if (messages.length > 0) {
+                afficherMessagesSupabase(messages);
+            } else {
+                afficherMessagesDemo();
+            }
+            
+            // Modifier le gestionnaire de formulaire pour localStorage
+            document.getElementById('condolenceForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nom = document.getElementById('nom').value.trim();
+                const relation = document.getElementById('relation').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                if (!nom || !relation || !message) return;
+                
+                const nouveauMessage = {
+                    id: Date.now(),
+                    nom: nom,
+                    relation: relation,
+                    message: message,
+                    created_at: new Date().toISOString()
+                };
+                
+                messages.unshift(nouveauMessage);
+                localStorage.setItem('condoleances', JSON.stringify(messages));
+                
+                ajouterMessageAffichageSupabase(nouveauMessage);
+                afficherConfirmation();
+                this.reset();
+            });
+        }
+        
+        // Fonction pour afficher la confirmation
+        function afficherConfirmation() {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.classList.remove('hidden');
+            
+            // Masquer le message après 5 secondes
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+        
+        // Fonction pour formater la date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        // Fonction de démonstration
+        function afficherMessagesDemo() {
+            const messagesDemo = [
+                {
+                    id: 1,
+                    nom: "Famille CHAAZOU",
+                    relation: "Famille",
+                    message: "Merci à tous pour vos messages de soutien et de réconfort pendant cette période difficile.",
+                    date: new Date().toISOString()
+                },
+                {
+                    id: 2,
+                    nom: "Jean Dupont",
+                    relation: "Ami",
+                    message: "Un homme de grande sagesse et de cœur généreux. Il manquera à toute la communauté.",
+                    date: new Date(Date.now() - 3600000).toISOString()
+                },
+                {
+                    id: 3,
+                    nom: "Marie Martin",
+                    relation: "Voisin",
+                    message: "Je me souviendrai toujours de son sourire et de ses conseils précieux. Que son âme repose en paix.",
+                    date: new Date(Date.now() - 7200000).toISOString()
+                }
+            ];
+            
+            afficherMessagesSupabase(messagesDemo);
+        }
+
+        // Fonction pour afficher les avis
+        function afficherAvis(avis) {
+            const container = document.getElementById('avisRecent');
+            
+            const avisHTML = avis.map(row => {
+                const [nom, lien, message] = row;
+                return `
+                    <div class="bg-white/60 p-4 rounded-lg border-l-4 border-gold-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-gold-600">${nom}</h4>
+                            <span class="text-xs text-stone-500">${new Date().toLocaleDateString()}</span>
+                        </div>
+                        ${lien ? `<a href="${lien}" class="text-gold-500 text-sm hover:underline">Voir le lien</a>` : ''}
+                        <p class="text-stone-700 mt-2">${message}</p>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = avisHTML || '<p class="text-center text-stone-500">Aucun avis pour le moment</p>';
+        }
+
+        // // Fonction de démonstration (remplacez par vos vraies données)
+        // function afficherAvisDemo() {
+        //     const avisDemo = [
+        //         ['Jean Dupont', '', 'Un homme de grande sagesse et de cœur généreux. Il manquera à toute la communauté.'],
+        //         ['Marie Martin', 'https://exemple.com/photo', 'Je me souviendrai toujours de son sourire et de ses conseils précieux.'],
+        //         ['Pierre Durand', '', 'Une grande perte pour notre village. Que son âme repose en paix.']
+        //     ];
+        //     afficherAvis(avisDemo);
+        // }
     </script>
 </body>
 
