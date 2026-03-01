@@ -1233,123 +1233,6 @@
         </div>
     </section>
 
-    <!-- Section Galerie Photo -->
-    <section id="galerie" class="py-20 px-4 bg-gradient-to-br from-stone-100 to-stone-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="serif-font text-4xl font-bold text-stone-800 mb-4">
-                    <i data-lucide="image" class="w-8 h-8 inline text-gold-600 mr-3"></i>
-                    Galerie de Souvenirs
-                </h2>
-                <p class="text-stone-600 max-w-2xl mx-auto">
-                    Un parcours à travers les moments précieux de la vie de Papa Michel
-                </p>
-            </div>
-            
-            <!-- Galerie principale avec défilement automatique -->
-            <div class="relative mb-12">
-                <!-- Image principale affichée -->
-                <div class="relative aspect-video bg-stone-900 rounded-2xl overflow-hidden shadow-2xl">
-                    <img id="mainGalleryImage" 
-                         src="images/defunt.png" 
-                         alt="Photo principale" 
-                         class="w-full h-auto object-contain transition-all duration-1000 ease-in-out align-items ">
-                    
-                    <!-- Overlay avec informations -->
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 id="imageTitle" class="text-white text-2xl font-bold mb-2">Papa Michel</h3>
-                        <p id="imageDescription" class="text-white/80">Un homme d'une grande sagesse</p>
-                    </div>
-                    
-                    <!-- Contrôles de navigation -->
-                    <button id="galleryPrev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-gold-600/90 hover:bg-gold-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 transform hover:scale-110">
-                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                    </button>
-                    <button id="galleryNext" class="absolute right-4 top-1/2 -translate-y-1/2 bg-gold-600/90 hover:bg-gold-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 transform hover:scale-110">
-                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                    </button>
-                    
-                    <!-- Indicateurs -->
-                    <div id="galleryIndicators" class="absolute bottom-4 right-6 flex gap-2">
-                        <!-- Indicateurs générés dynamiquement -->
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Miniatures en grille -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                <!-- Miniature 1 -->
-                <div class="gallery-thumbnail group relative aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-image="images/defunt.png" data-title="Papa Michel" data-description="Un homme d'une grande sagesse">
-                    <img src="images/defunt.png" alt="Papa Michel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-3">
-                            <p class="text-white text-sm font-medium">Papa Michel</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miniature 2 -->
-                <div class="gallery-thumbnail group relative aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-image="images/defunt_debout_en_tenue_traditionnlle.webp" data-title="Tenue Traditionnelle" data-description="Fier de ses racines et de sa culture">
-                    <img src="images/defunt_debout_en_tenue_traditionnlle.webp" alt="Tenue Traditionnelle" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-3">
-                            <p class="text-white text-sm font-medium">Tenue Traditionnelle</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miniature 3 -->
-                <div class="gallery-thumbnail group relative aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-image="images/defunt_debout_en_veste_jeunesse.webp" data-title="Jeunesse" data-description="Dans la force de l'âge">
-                    <img src="images/defunt_debout_en_veste_jeunesse.webp" alt="Jeunesse" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-3">
-                            <p class="text-white text-sm font-medium">Jeunesse</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miniature 4 -->
-                <div class="gallery-thumbnail group relative aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-image="images/defunt_entier.webp" data-title="Portrait Complet" data-description="Une présence imposante">
-                    <img src="images/defunt_entier.webp" alt="Portrait Complet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-3">
-                            <p class="text-white text-sm font-medium">Portrait Complet</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miniature 5 -->
-                <div class="gallery-thumbnail group relative aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-image="images/defuntAssi.webp" data-title="Moment de Réflexion" data-description="Pensif et serein">
-                    <img src="images/defuntAssi.webp" alt="Moment de Réflexion" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-3">
-                            <p class="text-white text-sm font-medium">Moment de Réflexion</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miniature 6 -->
-                <div class="gallery-thumbnail group relative aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl" data-image="images/DefuntJeune.webp" data-title="Souvenirs d'Enfance" data-description="Les débuts d'une belle histoire">
-                    <img src="images/DefuntJeune.webp" alt="Souvenirs d'Enfance" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-3">
-                            <p class="text-white text-sm font-medium">Souvenirs d'Enfance</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miniature 7 -->
-              
-                
-                <!-- Miniature 8 -->
-              
-                
-                <!-- Miniature 9 -->
-              
-            </div>
-        </div>
-    </section>
-
     <!-- Section Avis et Condoléances -->
     <section id="avis" class="py-20 px-4 bg-gradient-to-br from-stone-50 to-stone-100">
         <div class="max-w-7xl mx-auto">
@@ -1482,7 +1365,126 @@
     </section>
 
     <!-- Section Avis et Condoléances -->
-   
+    <section class="py-12 px-6 section-bg-light relative">
+        <!-- Watermark subtil -->
+       
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal fade-in-up">
+                <h2 class="serif-font text-5xl text-gold-700 mb-4">Avis et Condoléances</h2>
+                <div class="ornament-divider">
+                    <span>✦</span>
+                </div>
+                <p class="text-stone-600 text-lg">Partagez vos souvenirs et messages</p>
+            </div>
+
+            <!-- Formulaire Google Forms -->
+            <div class="glass-panel rounded-xl overflow-hidden reveal fade-in-scale">
+                <div class="bg-gradient-to-br from-gold-100 to-gold-50 p-8">
+                    <!-- Fleurs décoratives -->
+                    <img src="images/fleur.png" class="absolute top-4 left-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute top-4 right-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 left-4 w-16 h-16 opacity-30 transform -rotate-45" alt="Décoration">
+                    <img src="images/fleur.png" class="absolute bottom-4 right-4 w-16 h-16 opacity-30 transform rotate-45" alt="Décoration">
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="serif-font text-2xl font-bold text-stone-800 mb-2">Laissez votre message</h3>
+                        <p class="text-stone-600">Vos condoléances seront partagées avec la famille</p>
+                    </div>
+                    
+                    <!-- Formulaire de condoléances personnalisé -->
+                    <div class="bg-white rounded-lg shadow-inner p-6">
+                        <form id="condolenceForm" class="space-y-4">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-gold-100 rounded-full mx-auto mb-3 flex items-center justify-center">
+                                    <i data-lucide="heart" class="w-8 h-8 text-gold-600"></i>
+                                </div>
+                                <h4 class="serif-font text-xl font-bold text-stone-800">Partagez vos condoléances</h4>
+                                <p class="text-sm text-stone-600 mt-1">Vos messages seront visibles publiquement</p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="user" class="w-4 h-4 inline mr-1"></i>
+                                    Votre nom complet
+                                </label>
+                                <input type="text" id="nom" required 
+                                       class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
+                                       placeholder="Entrez votre nom">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="users" class="w-4 h-4 inline mr-1"></i>
+                                    Votre relation avec Papa Michel
+                                </label>
+                                <select id="relation" required 
+                                        class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200">
+                                    <option value="">Sélectionnez votre relation</option>
+                                    <option value="Famille">Membre de la famille</option>
+                                    <option value="Ami">Ami(e)</option>
+                                    <option value="Voisin">Voisin(e)</option>
+                                    <option value="Collègue">Collègue de travail</option>
+                                    <option value="Connaissance">Connaissance</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700 mb-2">
+                                    <i data-lucide="message-circle" class="w-4 h-4 inline mr-1"></i>
+                                    Votre message de condoléances
+                                </label>
+                                <textarea id="message" rows="4" required 
+                                          class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
+                                          placeholder="Exprimez vos condoléances et vos souvenirs..."></textarea>
+                            </div>
+                            
+                            <div class="flex items-center gap-2 text-sm text-stone-600">
+                                <i data-lucide="lock" class="w-4 h-4"></i>
+                                <span>Votre message sera publié immédiatement</span>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-gold-600 to-gold-700 hover:from-gold-700 hover:to-gold-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                Envoyer votre message
+                            </button>
+                        </form>
+                        
+                        <div id="formMessage" class="mt-4 hidden">
+                            <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>
+                                <div>
+                                    <p class="font-medium">Merci pour votre message</p>
+                                    <p class="text-sm">Il a été ajouté aux condoléances ci-dessous</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-6">
+                        <p class="text-sm text-stone-500 italic">
+                            <i data-lucide="heart" class="w-4 h-4 inline text-red-500"></i>
+                            Merci pour votre soutien et vos messages réconfortants
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Affichage des avis existants -->
+            <div class="mt-12 glass-panel p-6 rounded-xl reveal slide-in-left">
+                <h3 class="serif-font text-xl font-bold text-gold-600 mb-4">Messages récents</h3>
+                <div class="space-y-4" id="avisRecent">
+                    <!-- Les avis seront affichés ici via Google Sheets -->
+                    <div class="text-center py-8 text-stone-500">
+                        <i data-lucide="message-circle" class="w-8 h-8 mx-auto mb-2 text-gold-600"></i>
+                        <p>Les messages apparaîtront ici après soumission</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     </main>
 
@@ -1685,9 +1687,6 @@
 
             // Initialiser la base de données Supabase
             initSupabase();
-            
-            // Initialiser la galerie photo
-            initGallery();
         });
 
         // Base de données Supabase pour les condoléances
@@ -1739,123 +1738,6 @@
                 console.error('Erreur:', error);
                 afficherMessagesDemo();
             }
-        }
-        
-        // Galerie photo functionality
-        let currentImageIndex = 0;
-        let galleryAutoScrollInterval;
-        const galleryImages = [
-            { src: 'images/defunt.png', title: 'Papa Michel', description: 'Un homme d\'une grande sagesse' },
-            { src: 'images/defunt_debout_en_tenue_traditionnlle.webp', title: 'Tenue Traditionnelle', description: 'Fier de ses racines et de sa culture' },
-            { src: 'images/defunt_debout_en_veste_jeunesse.webp', title: 'Jeunesse', description: 'Dans la force de l\'âge' },
-            { src: 'images/defunt_entier.webp', title: 'Portrait Complet', description: 'Une présence imposante' },
-            { src: 'images/defuntAssi.webp', title: 'Moment de Réflexion', description: 'Pensif et serein' },
-            { src: 'images/DefuntJeune.webp', title: 'Souvenirs d\'Enfance', description: 'Les débuts d\'une belle histoire' },
-            { src: 'images/tissue_traditionnelle.webp', title: 'Culture et Tradition', description: 'Héritage culturel précieux' },
-            { src: 'images/fleur.png', title: 'Fleur de Mémoire', description: 'Symbole d\'éternité' },
-            { src: 'images/logo.png', title: 'Emblème Familial', description: 'Symbole de l\'héritage' }
-        ];
-        
-        // Initialiser la galerie
-        function initGallery() {
-            const mainImage = document.getElementById('mainGalleryImage');
-            const imageTitle = document.getElementById('imageTitle');
-            const imageDescription = document.getElementById('imageDescription');
-            const prevBtn = document.getElementById('galleryPrev');
-            const nextBtn = document.getElementById('galleryNext');
-            const thumbnails = document.querySelectorAll('.gallery-thumbnail');
-            
-            if (!mainImage) return;
-            
-            // Navigation manuelle
-            prevBtn?.addEventListener('click', () => {
-                clearInterval(galleryAutoScrollInterval);
-                navigateGallery(-1);
-                startGalleryAutoScroll();
-            });
-            
-            nextBtn?.addEventListener('click', () => {
-                clearInterval(galleryAutoScrollInterval);
-                navigateGallery(1);
-                startGalleryAutoScroll();
-            });
-            
-            // Clic sur les miniatures
-            thumbnails.forEach((thumbnail, index) => {
-                thumbnail.addEventListener('click', () => {
-                    clearInterval(galleryAutoScrollInterval);
-                    currentImageIndex = index;
-                    updateGalleryImage();
-                    startGalleryAutoScroll();
-                });
-            });
-            
-            // Démarrer le défilement automatique
-            startGalleryAutoScroll();
-            updateGalleryIndicators();
-        }
-        
-        // Navigation de la galerie
-        function navigateGallery(direction) {
-            currentImageIndex += direction;
-            
-            // Gérer les limites
-            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
-            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
-            
-            updateGalleryImage();
-            updateGalleryIndicators();
-        }
-        
-        // Mettre à jour l'image principale
-        function updateGalleryImage() {
-            const mainImage = document.getElementById('mainGalleryImage');
-            const imageTitle = document.getElementById('imageTitle');
-            const imageDescription = document.getElementById('imageDescription');
-            
-            if (!mainImage || galleryImages.length === 0) return;
-            
-            const currentImage = galleryImages[currentImageIndex];
-            
-            // Effet de transition
-            mainImage.style.opacity = '0';
-            
-            setTimeout(() => {
-                mainImage.src = currentImage.src;
-                imageTitle.textContent = currentImage.title;
-                imageDescription.textContent = currentImage.description;
-                mainImage.style.opacity = '1';
-            }, 300);
-        }
-        
-        // Mettre à jour les indicateurs
-        function updateGalleryIndicators() {
-            const indicators = document.getElementById('galleryIndicators');
-            if (!indicators || galleryImages.length === 0) return;
-            
-            indicators.innerHTML = '';
-            for (let i = 0; i < galleryImages.length; i++) {
-                const dot = document.createElement('button');
-                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === currentImageIndex ? 'bg-white w-8' : 'bg-white/50'
-                }`;
-                dot.addEventListener('click', () => {
-                    clearInterval(galleryAutoScrollInterval);
-                    currentImageIndex = i;
-                    updateGalleryImage();
-                    updateGalleryIndicators();
-                    startGalleryAutoScroll();
-                });
-                indicators.appendChild(dot);
-            }
-        }
-        
-        // Démarrer le défilement automatique de la galerie
-        function startGalleryAutoScroll() {
-            clearInterval(galleryAutoScrollInterval);
-            galleryAutoScrollInterval = setInterval(() => {
-                navigateGallery(1);
-            }, 5000); // Défilement toutes les 5 secondes
         }
         
         // Carousel functionality
@@ -1992,11 +1874,14 @@
                         </span>
                     </div>
                     <p class="text-stone-700 leading-relaxed mb-3">${message.message}</p>
-                   
+                    <div class="flex items-center gap-2 text-xs text-stone-400">
+                        <i data-lucide="database" class="w-3 h-3"></i>
+                        <span>ID: ${message.id} | Stocké dans Supabase</span>
+                    </div>
                 `;
                 carousel.appendChild(messageCard);
             });
-            // <span>ID: ${message.id} | Stocké dans Supabase</span>
+            
             // Recréer les icônes
             lucide.createIcons();
             
